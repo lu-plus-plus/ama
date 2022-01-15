@@ -44,7 +44,8 @@ add_library(amal SHARED
 	"src/util/wcwidth.cpp"
 	"src/script/jsenv.cpp"
 	"src/ast/node.cpp"
-	"src/script/jsapi.cpp")
+	"src/script/jsapi.cpp"
+	"src/entry/amal.cpp")
 set_property(
 	TARGET ama
 	APPEND PROPERTY LINK_LIBRARIES
