@@ -1,11 +1,13 @@
 #include "amal.hpp"
 
-#include <string>
-
 #include "../script/jsapi.hpp"
 #include "../../modules/cpp/json/json.h"
 
 namespace ama {
+
+	JSValueConst RunScript(std::string const & script) {
+		return RunScript(script.data(), script.size(), "anonymous.js");
+	}
 
 	JSValueConst RunScript(char const * pScript, size_t scriptLen, char const * scriptName) {
 		LazyInitScriptEnv();
@@ -70,8 +72,12 @@ namespace ama {
 		return ptr;
 	}
 
-	void FreeValue(JSValueConst val) {
+	void AmaFreeValue(JSValueConst val) {
 		JS_FreeValue(ama::jsctx, val);
+	}
+
+	void AmaDumpError() {
+		ama::DumpError(ama::jsctx);
 	}
 
 }
